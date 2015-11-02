@@ -38,3 +38,8 @@ Its free to signup - edit inputs.conf with your location information and appid (
 **This app is work in progress**
 
 Please submit issues, improvements patches to github - http://j-c-b.github.io/freenas_splunk/
+
+##TODO
+
+* Snapshot script and dashboard
+* ZFS related goodness for pools and datasets
