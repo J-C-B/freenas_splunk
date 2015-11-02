@@ -19,7 +19,60 @@
     </section>
 
     <section class="main-content">
-      <p>Work in progress for Splunk app for freenas</p>
+      <h1>
+<a id="freenas-app-for-splunk" class="anchor" href="#freenas-app-for-splunk" aria-hidden="true"><span class="octicon octicon-link"></span></a>Freenas app for Splunk</h1>
+
+<p>This repo contains a freenas app for Splunk®</p>
+
+<p><a href="http://www.freenas.org/">http://www.freenas.org/</a></p>
+
+<h2>
+<a id="inputs" class="anchor" href="#inputs" aria-hidden="true"><span class="octicon octicon-link"></span></a>Inputs</h2>
+
+<h3>
+<a id="sh" class="anchor" href="#sh" aria-hidden="true"><span class="octicon octicon-link"></span></a>.SH</h3>
+
+<p>There are several .sh scripts in /TA-SH_files_for_freenas directory that need to be placed on a persistent dataset on the freenas server with a cron job associated with them, set to run every few minutes.</p>
+
+<p><a href="https://doc.freenas.org/9.3/freenas_tasks.html">https://doc.freenas.org/9.3/freenas_tasks.html</a></p>
+
+<p>these scripts output to “logger” - which is the syslog output</p>
+
+<p>also once copied over this may be your friend :)</p>
+
+<div class="highlight highlight-source-shell"><pre>chmod 777 foo.sh</pre></div>
+
+<h3>
+<a id="syslog" class="anchor" href="#syslog" aria-hidden="true"><span class="octicon octicon-link"></span></a>Syslog</h3>
+
+<p>You need to configure freenas to log to a central server (Splunk®) for the data to be ingested, point to port 1514 e.g. </p>
+
+<pre><code>192.168.1.2:1514
+</code></pre>
+
+<p><a href="https://doc.freenas.org/9.3/freenas_system.html#general">https://doc.freenas.org/9.3/freenas_system.html#general</a></p>
+
+<h3>
+<a id="local-weather-input-optional" class="anchor" href="#local-weather-input-optional" aria-hidden="true"><span class="octicon octicon-link"></span></a>Local Weather input (Optional)</h3>
+
+<p>To compare local temps with system temps I added a json API input via <a href="http://openweathermap.org">http://openweathermap.org</a></p>
+
+<p>Its free to signup - edit inputs.conf with your location information and appid (API key)</p>
+
+<h2>
+<a id="dashboards" class="anchor" href="#dashboards" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dashboards</h2>
+
+<h3>
+<a id="system-info" class="anchor" href="#system-info" aria-hidden="true"><span class="octicon octicon-link"></span></a>System Info</h3>
+
+<p><img src="https://static.dyp.im/gKpG2D91QX/62eb965b0f5b06c26b89d52beaa078e5.png" alt="Example Dashboard"></p>
+
+<h2>
+<a id="very-important-note" class="anchor" href="#very-important-note" aria-hidden="true"><span class="octicon octicon-link"></span></a>VERY IMPORTANT NOTE</h2>
+
+<p><strong>This app is work in progress</strong></p>
+
+<p>Please submit issues, improvements patches to github - <a href="http://j-c-b.github.io/freenas_splunk/">http://j-c-b.github.io/freenas_splunk/</a></p>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/J-C-B/freenas_splunk">Freenas app for splunk</a> is maintained by <a href="https://github.com/J-C-B">J-C-B</a>.</span>
