@@ -1,0 +1,15 @@
+<nav color="#000000">
+ 	<collection label="Universal Dashboards">
+	       <view name="system_info" />
+  	</collection>
+  	<collection label="External Help">
+    		<view name="Freenas" />
+  	</collection>
+	<collection label="Experimental Views">
+  		<view name="Top_Domains" />
+  		<view name="Force_Map" />
+    		<view name="Sankey_Map" />
+     	</collection>
+    	<view name="search" />
+    	<view name="data_models" />
+</nav>
