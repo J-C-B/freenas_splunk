@@ -7,11 +7,17 @@ http://www.freenas.org/
 ##Inputs
 
 ###.SH
-There are several .sh scripts in /bin directory that need to be placed on a persistent dataset on the freenas server with a cron job associated with them, set to run every few minutes.
+There are several .sh scripts in /TA-SH_files_for_freenas directory that need to be placed on a persistent dataset on the freenas server with a cron job associated with them, set to run every few minutes.
 
 https://doc.freenas.org/9.3/freenas_tasks.html
 
 these scripts output to “logger” - which is the syslog output
+
+also once copied over this may be your friend :)
+
+```sh
+chmod 777 foo.sh
+```
 
 ###Syslog
 
@@ -29,4 +35,6 @@ Its free to signup - edit inputs.conf with your location information and appid (
 
 ##VERY IMPORTANT NOTE
 
-**This app is incomplete**
+**This app is work in progress**
+
+Please submit issues, improvements patches to github - http://j-c-b.github.io/freenas_splunk/
