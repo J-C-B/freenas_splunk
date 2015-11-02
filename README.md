@@ -1,6 +1,6 @@
-#Freenas app for Splunk
+#FreeNAS app for Splunk
 
-This repo contains a freenas app for Splunk®
+This repo contains a FreeNAS app for Splunk®
 
 http://www.freenas.org/
 
@@ -8,14 +8,14 @@ http://www.freenas.org/
 
 ###System Info
 
-This Dashboard contains information on the freenas system(s)
+This Dashboard contains information on the FreeNAS system(s)
 
 ![Example Dashboard](https://static.dyp.im/gKpG2D91QX/62eb965b0f5b06c26b89d52beaa078e5.png)
 
 ##Inputs
 
 ###.SH
-There are several .sh scripts in /TA-SH_files_for_freenas directory that need to be placed on a persistent dataset on the freenas server with a cron job associated with them, set to run every few minutes.
+There are several .sh scripts in /TA-SH_files_for_FreeNAS directory that need to be placed on a persistent dataset on the FreeNAS server with a cron job associated with them, set to run every few minutes.
 
 https://doc.freenas.org/9.3/freenas_tasks.html
 
@@ -29,7 +29,7 @@ chmod 777 foo.sh
 
 ###Syslog
 
-You need to configure freenas to log to a central server (Splunk®) for the data to be ingested, point to port 1514 e.g. 
+You need to configure FreeNAS to log to a central server (Splunk®) for the data to be ingested, point to port 1514 e.g. 
 
 	192.168.1.2:1514
 
