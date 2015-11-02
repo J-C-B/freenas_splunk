@@ -2,7 +2,21 @@
 
 This repo contains a FreeNAS app for Splunk®
 
+##FreeNAS
+
 http://www.freenas.org/
+
+FreeNAS is a powerful, flexible home storage system – configured by you, for your needs.
+
+###ZFS
+The Z File System, or ZFS , is an advanced file system designed to overcome many of the major problems found in previous designs. 
+
+##Splunk®
+http://www.splunk.com/en_us/download/splunk-enterprise.html
+
+Splunk Enterprise is the leading platform for real-time operational intelligence. When you download Splunk Enterprise for free, you get a Splunk Enterprise license for 60 days that lets you index up to 500 megabytes of data per day.
+
+When the free trial ends, you can convert to a perpetual Free license or purchase an Enterprise license to continue using the expanded functionality designed for multi-user deployments.
 
 ##Dashboards
 
@@ -52,5 +66,7 @@ App is available directly on Splunkbase https://splunkbase.splunk.com/app/2940/#
 
 ##TODO
 
-* Snapshot script and dashboard
+* Snapshot script and dashboard for success / fail
 * ZFS related goodness for pools and datasets
+* Improve dashboard search efficiency
+* Use ipmiOutput for host data input

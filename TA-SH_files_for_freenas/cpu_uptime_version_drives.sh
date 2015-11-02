@@ -1,10 +1,9 @@
 #! /bin/sh
 
-#credis
+#credits
 # https://gist.github.com/i3luefire/242844141fde57d5cafd
 # https://forums.freenas.org/index.php?threads/how-to-monitor-system-cpu-hdd-mobo-gpu-temperatures-on-freenas-8.2994/page-3
 
-#sysctl -a | egrep -E 'cpu\.[0-9]+\.temp' | cut -d'.' -f2 -f3 -f4 -f5 | tr -d ' ' | sed 's/\:/\=/g' | logger
 sysctl -a | egrep -E 'cpu\.[0-9]+\.temp' | cut -d'.' -f2 -f3 -f4 | tr -d ' ' | sed 's/\:/\=/g' | sed 's/cpu./cpuid\=/g' | sed 's/\./\,/g' | logger
 
 
@@ -14,7 +13,7 @@ FreenasVersion=$(cat /etc/version)
 
 echo FreenasVersion=$FreenasVersion | logger
 
-#Get drive activity
+#Get drive activity (broken)
 
 #for i in $(sysctl -n kern.disks | awk '{for (i=NF; i!=0 ; i--) if (match($i, '/ada/')) print $i }'); do    echo -n $i:; adastat $i; done; echo ; echo
 # for i in $(sysctl -n kern.disks | awk '{for (i=NF; i!=0 ; i--) if(match($i, '/[COLOR="#FF0000"]ada[/COLOR]/')) print $i }' ); do    echo -n $i:;adastat $i; done; echo ; echo
