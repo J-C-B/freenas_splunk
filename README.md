@@ -8,11 +8,15 @@ http://www.freenas.org/
 
 FreeNAS is a powerful, flexible home storage system – configured by you, for your needs.
 
+Note - This *should* also work for a vanilla [FreeBSD](https://www.freebsd.org/ "FreeBSD") host, and FreeNAS 10 but only basic testing done
+
 ###ZFS
 The Z File System, or ZFS , is an advanced file system designed to overcome many of the major problems found in previous designs. 
 
 ##Splunk®
-http://www.splunk.com/en_us/download/splunk-enterprise.html
+
+[Free Splunk Download Link](http://www.splunk.com/en_us/download/splunk-enterprise.html "Download]")
+
 
 Splunk Enterprise is the leading platform for real-time operational intelligence. When you download Splunk Enterprise for free, you get a Splunk Enterprise license for 60 days that lets you index up to 500 megabytes of data per day.
 
@@ -28,14 +32,14 @@ This Dashboard contains information on the FreeNAS system(s)
 
 ##Inputs
 
-###.SH
-There are several .sh scripts in /TA-SH_files_for_FreeNAS directory that need to be placed on a persistent dataset on the FreeNAS server with a cron job associated with them, set to run every few minutes.
+###.SH files
+There are several .sh scripts in /TA-SH\_files\_for_FreeNAS directory that need to be placed on a persistent dataset on the FreeNAS server with a cron job associated with them, set to run every few minutes.
 
 https://doc.freenas.org/9.3/freenas_tasks.html
 
 these scripts output to “logger” - which is the syslog output
 
-also once copied over this may be your friend :)
+Also once copied over this command may be your friend :)
 
 ```sh
 chmod 777 foo.sh
@@ -51,7 +55,7 @@ https://doc.freenas.org/9.3/freenas_system.html#general
 
 ###Local Weather input (Optional)
 
-To compare local temps with system temps I added a json API input via http://openweathermap.org
+To compare local temps with system temps I added a json API input via [openweathermap](http://openweathermap.org "Download]")
 
 Its free to signup - edit inputs.conf with your location information and appid (API key)
 
