@@ -20,11 +20,30 @@
 
     <section class="main-content">
       <h1>
-<a id="freenas-app-for-splunk" class="anchor" href="#freenas-app-for-splunk" aria-hidden="true"><span class="octicon octicon-link"></span></a>Freenas app for Splunk</h1>
+<a id="freenas-app-for-splunk" class="anchor" href="#freenas-app-for-splunk" aria-hidden="true"><span class="octicon octicon-link"></span></a>FreeNAS app for Splunk</h1>
 
-<p>This repo contains a freenas app for Splunk®</p>
+<p>This repo contains a FreeNAS app for Splunk®</p>
+
+<h2>
+<a id="freenas" class="anchor" href="#freenas" aria-hidden="true"><span class="octicon octicon-link"></span></a>FreeNAS</h2>
 
 <p><a href="http://www.freenas.org/">http://www.freenas.org/</a></p>
+
+<p>FreeNAS is a powerful, flexible home storage system – configured by you, for your needs.</p>
+
+<h3>
+<a id="zfs" class="anchor" href="#zfs" aria-hidden="true"><span class="octicon octicon-link"></span></a>ZFS</h3>
+
+<p>The Z File System, or ZFS , is an advanced file system designed to overcome many of the major problems found in previous designs. </p>
+
+<h2>
+<a id="splunk" class="anchor" href="#splunk" aria-hidden="true"><span class="octicon octicon-link"></span></a>Splunk®</h2>
+
+<p><a href="http://www.splunk.com/en_us/download/splunk-enterprise.html">http://www.splunk.com/en_us/download/splunk-enterprise.html</a></p>
+
+<p>Splunk Enterprise is the leading platform for real-time operational intelligence. When you download Splunk Enterprise for free, you get a Splunk Enterprise license for 60 days that lets you index up to 500 megabytes of data per day.</p>
+
+<p>When the free trial ends, you can convert to a perpetual Free license or purchase an Enterprise license to continue using the expanded functionality designed for multi-user deployments.</p>
 
 <h2>
 <a id="dashboards" class="anchor" href="#dashboards" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dashboards</h2>
@@ -32,7 +51,7 @@
 <h3>
 <a id="system-info" class="anchor" href="#system-info" aria-hidden="true"><span class="octicon octicon-link"></span></a>System Info</h3>
 
-<p>This Dashboard contains information on the freenas system(s)</p>
+<p>This Dashboard contains information on the FreeNAS system(s)</p>
 
 <p><img src="https://static.dyp.im/gKpG2D91QX/62eb965b0f5b06c26b89d52beaa078e5.png" alt="Example Dashboard"></p>
 
@@ -42,7 +61,7 @@
 <h3>
 <a id="sh" class="anchor" href="#sh" aria-hidden="true"><span class="octicon octicon-link"></span></a>.SH</h3>
 
-<p>There are several .sh scripts in /TA-SH_files_for_freenas directory that need to be placed on a persistent dataset on the freenas server with a cron job associated with them, set to run every few minutes.</p>
+<p>There are several .sh scripts in /TA-SH_files_for_FreeNAS directory that need to be placed on a persistent dataset on the FreeNAS server with a cron job associated with them, set to run every few minutes.</p>
 
 <p><a href="https://doc.freenas.org/9.3/freenas_tasks.html">https://doc.freenas.org/9.3/freenas_tasks.html</a></p>
 
@@ -55,7 +74,7 @@
 <h3>
 <a id="syslog" class="anchor" href="#syslog" aria-hidden="true"><span class="octicon octicon-link"></span></a>Syslog</h3>
 
-<p>You need to configure freenas to log to a central server (Splunk®) for the data to be ingested, point to port 1514 e.g. </p>
+<p>You need to configure FreeNAS to log to a central server (Splunk®) for the data to be ingested, point to port 1514 e.g. </p>
 
 <pre><code>192.168.1.2:1514
 </code></pre>
@@ -82,8 +101,10 @@
 <a id="todo" class="anchor" href="#todo" aria-hidden="true"><span class="octicon octicon-link"></span></a>TODO</h2>
 
 <ul>
-<li>Snapshot script and dashboard</li>
+<li>Snapshot script and dashboard for success / fail</li>
 <li>ZFS related goodness for pools and datasets</li>
+<li>Improve dashboard search efficiency</li>
+<li>Use ipmiOutput for host data input</li>
 </ul>
 
       <footer class="site-footer">
