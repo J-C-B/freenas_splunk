@@ -33,8 +33,23 @@ To compare local temps with system temps I added a json API input via http://ope
 
 Its free to signup - edit inputs.conf with your location information and appid (API key)
 
+##Dashboards
+
+###System Info
+
+This Dashboard contains information on the freenas system(s)
+
+![Example Dashboard](https://static.dyp.im/gKpG2D91QX/62eb965b0f5b06c26b89d52beaa078e5.png)
+
 ##VERY IMPORTANT NOTE
 
 **This app is work in progress**
 
 Please submit issues, improvements patches to github - http://j-c-b.github.io/freenas_splunk/
+
+App is available directly on Splunkbase https://splunkbase.splunk.com/app/2940/#/overview
+
+##TODO
+
+* Snapshot script and dashboard
+* ZFS related goodness for pools and datasets
