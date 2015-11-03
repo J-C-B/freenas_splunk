@@ -58,6 +58,8 @@ https://doc.freenas.org/9.3/freenas_system.html#general
 
 ###Local Weather input (Optional)
 
+For this input to work the [REST API Modular Input](https://splunkbase.splunk.com/app/1546/ "Download]") is required (thanks to the awesome Damien Dallimore)
+
 To compare local temps with system temps I added a json API input via [openweathermap](http://openweathermap.org "Download]")
 
 Its free to signup - edit inputs.conf with your location information and appid (API key)
