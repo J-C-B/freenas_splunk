@@ -35,6 +35,22 @@ This Dashboard contains information on the FreeNAS system(s)
 
 ##Inputs
 
+**For this app to work completely the [REST API Modular Input](https://splunkbase.splunk.com/app/1546/ "Download]") is required, install the REST app first (thanks to the awesome Damien Dallimore)**
+
+###FreeNAS API
+
+http://api.freenas.org/index.html
+
+This app utilises the FreeNAS api for some data.
+
+Check either inputs.conf, or if you are a novice you can just change the details in the “data inputs” section of Splunk.
+
+You will need to configure for your environment;
+
+* Your FreeNAS IP address or host name
+* Your FreeNAS ROOT password (currently the FreeNAS API only allows the root user)
+
+
 ###.SH files
 There are several .sh scripts in /TA-SH\_files\_for_FreeNAS directory that need to be placed on a persistent dataset on the FreeNAS server with a cron job associated with them, set to run every few minutes.
 
@@ -56,9 +72,7 @@ You need to configure FreeNAS to log to a central server (Splunk®) for the data
 
 https://doc.freenas.org/9.3/freenas_system.html#general
 
-###Local Weather input (Optional)
-
-For this input to work the [REST API Modular Input](https://splunkbase.splunk.com/app/1546/ "Download]") is required (thanks to the awesome Damien Dallimore)
+###Local Weather input - REST api (Optional)
 
 To compare local temps with system temps I added a json API input via [openweathermap](http://openweathermap.org "Download]")
 
