@@ -1,9 +1,0 @@
-#exclude local and the files etc in sub directories
-*/local
-*/metadata
-
-#Mac OS X
-.DS_Store
-
-# Python
-*.py[co]
