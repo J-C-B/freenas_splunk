@@ -62,6 +62,24 @@
 <h2>
 <a id="inputs" class="anchor" href="#inputs" aria-hidden="true"><span class="octicon octicon-link"></span></a>Inputs</h2>
 
+<p><strong>For this app to work completely the <a href="https://splunkbase.splunk.com/app/1546/" title="Download]">REST API Modular Input</a> is required, install the REST app first (thanks to the awesome Damien Dallimore)</strong></p>
+
+<h3>
+<a id="freenas-api" class="anchor" href="#freenas-api" aria-hidden="true"><span class="octicon octicon-link"></span></a>FreeNAS API</h3>
+
+<p><a href="http://api.freenas.org/index.html">http://api.freenas.org/index.html</a></p>
+
+<p>This app utilises the FreeNAS api for some data.</p>
+
+<p>Check either inputs.conf, or if you are a novice you can just change the details in the “data inputs” section of Splunk.</p>
+
+<p>You will need to configure for your environment;</p>
+
+<ul>
+<li>Your FreeNAS IP address or host name</li>
+<li>Your FreeNAS ROOT password (currently the FreeNAS API only allows the root user)</li>
+</ul>
+
 <h3>
 <a id="sh-files" class="anchor" href="#sh-files" aria-hidden="true"><span class="octicon octicon-link"></span></a>.SH files</h3>
 
@@ -86,9 +104,7 @@
 <p><a href="https://doc.freenas.org/9.3/freenas_system.html#general">https://doc.freenas.org/9.3/freenas_system.html#general</a></p>
 
 <h3>
-<a id="local-weather-input-optional" class="anchor" href="#local-weather-input-optional" aria-hidden="true"><span class="octicon octicon-link"></span></a>Local Weather input (Optional)</h3>
-
-<p>For this input to work the <a href="https://splunkbase.splunk.com/app/1546/" title="Download]">REST API Modular Input</a> is required (thanks to the awesome Damien Dallimore)</p>
+<a id="local-weather-input---rest-api-optional" class="anchor" href="#local-weather-input---rest-api-optional" aria-hidden="true"><span class="octicon octicon-link"></span></a>Local Weather input - REST api (Optional)</h3>
 
 <p>To compare local temps with system temps I added a json API input via <a href="http://openweathermap.org" title="Download]">openweathermap</a></p>
 
