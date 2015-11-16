@@ -28,10 +28,8 @@ When the free trial ends, you can convert to a perpetual Free license or purchas
 
 This Dashboard contains information on the FreeNAS system(s)
 
-![Example Dashboard1](https://static.dyp.im/uevtVLqV6G/3aebc93f0f8ddc5c89871c77ba7db634.png)
+![Example Dashboard1](https://static.dyp.im/8INbVfwu9O/1cd0eef59809dd30f872e2833c7924ae.png)
 
-
-![Example Dashboard2](https://static.dyp.im/gKpG2D91QX/62eb965b0f5b06c26b89d52beaa078e5.png)
 
 ##Inputs
 
