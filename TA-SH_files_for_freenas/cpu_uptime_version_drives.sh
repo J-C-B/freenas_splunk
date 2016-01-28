@@ -13,14 +13,13 @@ FreenasVersion=$(cat /etc/version)
 
 echo FreenasVersion=$FreenasVersion | logger
 
-#Get drive activity (broken)
 
-#for i in $(sysctl -n kern.disks | awk '{for (i=NF; i!=0 ; i--) if (match($i, '/ada/')) print $i }'); do    echo -n $i:; adastat $i; done; echo ; echo
-# for i in $(sysctl -n kern.disks | awk '{for (i=NF; i!=0 ; i--) if(match($i, '/[COLOR="#FF0000"]ada[/COLOR]/')) print $i }' ); do    echo -n $i:;adastat $i; done; echo ; echo
+#Get nic info
+
+sysctl -a | grep dev.em. | sed 's/\:/\ \=/g'
 
 #Get systemload
 
-#uptime | awk '{ print "SystemLoad1min="$10"\n""SystemLoad5min="$11"\n""SystemLoad10min="$12}"\n"' | logger
 uptime | awk '{ print "SystemLoad1min="$10"\n""SystemLoad5min="$11"\n""SystemLoad10min="$12}"\n"' | logger
 
 
