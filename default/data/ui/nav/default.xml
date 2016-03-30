@@ -1,17 +1,20 @@
 <nav color="#000000">
- 	<collection label="Dashboards">
-	       <view name="system_info" />
-         <view name="zfs" />
-  	</collection>
+  <collection label="Dashboards">
+      <view name="system_info" />
+      <view name="zfs" />
+      <view name="nics" />
+    </collection>
     <collection label="External Resources">
       <view name="FreeNAS Docs" />
       <a href="https://doc.freenas.org/">FreeNAS Docs</a>
       <view name="APP github" />
       <a href="http://j-c-b.github.io/freenas_splunk/">FreeNAS App github</a>
+      <view name="Splunk Answers" />
+      <a href="https://answers.splunk.com/app/questions/2940.html">Splunk Answers</a>
     </collection>
     <collection label="all dashboards">
       <view source="unclassified" />
     </collection>
-    	<view name="search" />
-    	<view name="data_models" />
+      <view name="search" />
+      <view name="data_models" />
 </nav>
