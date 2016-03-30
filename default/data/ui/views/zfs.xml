@@ -1,0 +1,52 @@
+<dashboard>
+  <label>ZFS</label>
+  <row>
+    <panel>
+      <title>Scrubs enabled?</title>
+      <table>
+        <search>
+          <query>index=freenas source="rest://FreeNAS_storagescrub" | table id scrub_volume scrub_enabled | dedup id | sort id</query>
+          <earliest>-15m</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Snapshots (30 Days)</title>
+      <table>
+        <search>
+          <query>index=freenas source="rest://FreeNAS_storagesnapshots" | eval Refered=case(       refer&gt;=(1024*1024*1024*1024),round(refer/(1024*1024*1024*1024),2)."TB",      refer&gt;=(1024*1024*1024),round(refer/(1024*1024*1024),2)."GB",      refer&gt;=(1024*1024),round(refer/(1024*1024),2)."MB",  refer&gt;=1024,round(refer/1024,2)."KB",  1=1,volume."B")| table id fullname name mostrecent parent_type Refered | dedup fullname | sort mostrecent | reverse</query>
+          <earliest>-30d@d</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">30</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Device info</title>
+      <table>
+        <search>
+          <query>index="freenas" dev=* | dedup dev | table dev DriveSerialNumber DriveBrand DriveModel</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="wrap">undefined</option>
+        <option name="rowNumbers">undefined</option>
+        <option name="drilldown">row</option>
+      </table>
+    </panel>
+  </row>
+</dashboard>

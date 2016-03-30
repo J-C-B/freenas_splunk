@@ -1,0 +1,20 @@
+<dashboard>
+  <label>ZFS</label>
+  <row>
+    <panel>
+      <title>Scrubs enabled?</title>
+      <table>
+        <search>
+          <query>index=freenas source="rest://FreeNAS_storagescrub" | table id scrub_volume scrub_enabled | dedup id | sort id</query>
+          <earliest>-15m</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+  </row>
+</dashboard>

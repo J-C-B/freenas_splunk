@@ -14,10 +14,6 @@ FreenasVersion=$(cat /etc/version)
 echo FreenasVersion=$FreenasVersion | logger
 
 
-#Get nic info
-
-sysctl -a | grep dev.em. | sed 's/\:/\ \=/g'
-
 #Get systemload
 
 uptime | awk '{ print "SystemLoad1min="$10"\n""SystemLoad5min="$11"\n""SystemLoad10min="$12}"\n"' | logger
