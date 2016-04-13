@@ -2,6 +2,17 @@
   <label>ZFS</label>
   <row>
     <panel>
+      <viz type="sankey_diagram_app.sankey_diagram">
+        <search>
+          <query>index=freenas CAP=*  | stats count by PoolName HEALTH</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </search>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
       <title>Scrubs enabled?</title>
       <table>
         <search>
