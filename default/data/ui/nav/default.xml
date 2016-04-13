@@ -1,4 +1,4 @@
-<nav color="#000000">
+<nav color="#1995D3">
   <collection label="Dashboards">
       <view name="system_info" />
       <view name="zfs" />
