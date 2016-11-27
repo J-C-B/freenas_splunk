@@ -41,6 +41,6 @@ do
         DevTemp=`smartctl -a /dev/$i | awk '/Temperature_Celsius/{print $0}' | awk '{print $10}'`
         DevSerNum=`smartctl -a /dev/$i | awk '/Serial Number:/{print $0}' | awk '{print $3}'`
         DevName=`smartctl -a /dev/$i | awk '/Device Model:/{print $0}' | awk '{print $4}'`
-	DevModelFamily=`smartctl -a /dev/$i | awk '/Model Family:/{print $0}' | awk '{print $3}'`
-        echo dev=$i, temperature=$DevTemp, DriveSerialNumber=$DevSerNum, DriveBrand=$DevName, DriveModel=$DevModelFamily | logger
+	DevModelFamily=`smartctl -a /dev/$i | awk '/Model Family:/{print $0}' | awk '{ print substr($0, index($0,$3)) }'`
+        echo dev=$i, temperature=$DevTemp, DriveSerialNumber=$DevSerNum, DriveBrand=$DevName, DriveModel=$DevModelFamily
 done
