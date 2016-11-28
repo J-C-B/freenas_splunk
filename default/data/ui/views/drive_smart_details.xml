@@ -1,0 +1,27 @@
+<dashboard>
+  <label>Drive Smart details</label>
+  <description>Info gathered from smartctl</description>
+  <row>
+    <panel>
+      <title>Drive Smart details</title>
+      <table>
+        <search>
+          <query>source="freenas" index="freenas" sourcetype="syslog" DriveModel="*"
+| dedup dev
+| table dev DriveBrand DriveModel DriveSerialNumber DevATA_Version Dev_is DevFirmware_Version DevLocal_Time DevLU_WWN_Device_Id DevSATA_Version DevSector_Size DevSMART_support DevUser_Capacity
+| sort dev</query>
+          <earliest>-4h@m</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="count">20</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="percentagesRow">false</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+      </table>
+    </panel>
+  </row>
+</dashboard>

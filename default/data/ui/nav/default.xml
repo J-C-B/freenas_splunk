@@ -6,6 +6,8 @@
       <view name="zfs" />
     <divider />
       <view name="nics" />
+     <divider />
+      <view name="drive_smart_details" />
     </collection>
     <collection label="External Resources">
       <view name="FreeNAS Docs" />
