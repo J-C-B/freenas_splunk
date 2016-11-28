@@ -38,9 +38,22 @@ uptime | awk '{ print "SystemLoad1min="$10"\n""SystemLoad5min="$11"\n""SystemLoa
 
 for i in $(sysctl -n kern.disks)
 do
+
+        DevModelFamily=`smartctl -a /dev/$i | awk '/Model Family:/{print $0}' | awk '{ print substr($0, index($0,$3)) }'`
+        DevName=`smartctl -a /dev/$i | awk '/Device Model:/{print $0}' | awk '{ print substr($0, index($0,$3)) }'`
+        DevSerNum=`smartctl -a /dev/$i | awk '/Serial Number:/{print $0}' | awk '{ print substr($0, index($0,$3)) }'`
+        DevLU_WWN_Device_Id=`smartctl -a /dev/$i | awk '/LU WWN Device Id:/{print $0}' | awk '{ print substr($0, index($0,$5)) }'`
+        DevFirmware_Version=`smartctl -a /dev/$i | awk '/Firmware Version:/{print $0}' | awk '{ print substr($0, index($0,$3)) }'`
+        DevUser_Capacity=`smartctl -a /dev/$i | awk '/User Capacity:/{print $0}' | awk '{ print substr($0, index($0,$3)) }' | sed 's/\,//g'`
+        DevSector_Size=`smartctl -a /dev/$i | awk '/Sector Size:/{print $0}' | awk '{ print substr($0, index($0,$3)) }' | sed 's/\,//g' | sed 's/\ /_/g'`
+        Dev_is=`smartctl -a /dev/$i | awk '/Device is:/{print $0}' | awk '{ print substr($0, index($0,$3)) }' | sed 's/\,//g' | sed 's/\ /_/g'`
+        DevSATA_Version=`smartctl -a /dev/$i | awk '/SATA Version is:/{print $0}' | awk '{ print substr($0, index($0,$5)) }' | sed 's/\,//g' | sed 's/\ /_/g'`
+        DevATA_Version=`smartctl -a /dev/$i | awk '/^ATA Version is:/{print $0}' | awk '{ print substr($0, index($0,$4)) }'| sed 's/\,//g' | sed 's/\ /_/g'`
+        DevLocal_Time=`smartctl -a /dev/$i | awk '/Local Time is:/{print $0}' | awk '{ print substr($0, index($0,$4)) }'`
+        DevSMART_support=`smartctl -a /dev/$i | awk '/SMART support is:/{print $0}' | awk '{ print substr($0, index($0,$4)) }' | sed 's/\,//g' | sed 's/\ /_/g'`
+        DevATA_Version=`smartctl -a /dev/$i | awk '/ATA Version is:/{print $0}' | awk '{ print substr($0, index($0,$4)) }' | sed 's/\,//g' | sed 's/\ /_/g'`
+
+
         DevTemp=`smartctl -a /dev/$i | awk '/Temperature_Celsius/{print $0}' | awk '{print $10}'`
-        DevSerNum=`smartctl -a /dev/$i | awk '/Serial Number:/{print $0}' | awk '{print $3}'`
-        DevName=`smartctl -a /dev/$i | awk '/Device Model:/{print $0}' | awk '{print $4}'`
-	DevModelFamily=`smartctl -a /dev/$i | awk '/Model Family:/{print $0}' | awk '{print $3}'`
-        echo dev=$i, temperature=$DevTemp, DriveSerialNumber=$DevSerNum, DriveBrand=$DevName, DriveModel=$DevModelFamily | logger
+        echo dev=$i, temperature=$DevTemp, DriveSerialNumber=$DevSerNum, DriveBrand=$DevName, DriveModel=$DevModelFamily, DevLU_WWN_Device_Id=$DevLU_WWN_Device_Id, DevFirmware_Version=$DevFirmware_Version, DevUser_Capacity=$DevUser_Capacity, DevSector_Size="$DevSector_Size", DevRotation_Rate="$DevRotation_Rate", Dev_is="$Dev_is", DevATA_Version=$DevATA_Version, DevSATA_Version="$DevSATA_Version", DevLocal_Time="$DevLocal_Time", DevSMART_support="$DevSMART_support"| logger
 done

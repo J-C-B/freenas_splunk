@@ -1,14 +1,21 @@
 <nav color="#1995D3">
   <collection label="Dashboards">
       <view name="system_info" />
+    <divider />
+      <view name="zfssend" />
       <view name="zfs" />
+    <divider />
       <view name="nics" />
+     <divider />
+      <view name="drive_smart_details" />
     </collection>
     <collection label="External Resources">
       <view name="FreeNAS Docs" />
       <a href="https://doc.freenas.org/">FreeNAS Docs</a>
       <view name="APP github" />
       <a href="http://j-c-b.github.io/freenas_splunk/">FreeNAS App github</a>
+      <view name="rep github" />
+      <a href="https://github.com/J-C-B/freenas_and_iohyve/blob/master/freenas_backup.sh/">FreeNAS Dataset Backup Script</a>
       <view name="Splunk Answers" />
       <a href="https://answers.splunk.com/app/questions/2940.html">Splunk Answers</a>
     </collection>
