@@ -1,10 +1,20 @@
-<dashboard>
+<form>
   <label>ZFS</label>
+  <fieldset submitButton="false">
+    <input type="text" token="dsf" searchWhenChanged="true">
+      <label>Dataset Filter</label>
+      <default>*</default>
+    </input>
+    <input type="text" token="ssnf">
+      <label>snapshot name filter</label>
+      <default>*</default>
+    </input>
+  </fieldset>
   <row>
     <panel>
       <viz type="sankey_diagram_app.sankey_diagram">
         <search>
-          <query>index=freenas CAP=*  | stats count by PoolName HEALTH</query>
+          <query>index=freenas CAP=*  PoolName=$dsf$| stats count by PoolName HEALTH</query>
           <earliest>-24h@h</earliest>
           <latest>now</latest>
         </search>
@@ -16,15 +26,15 @@
       <title>Scrubs enabled?</title>
       <table>
         <search>
-          <query>index=freenas source="rest://FreeNAS_storagescrub" | table id scrub_volume scrub_enabled | dedup id | sort id</query>
+          <query>index=freenas source="rest://FreeNAS_storagescrub" scrub_volume=$dsf$ | table id scrub_volume scrub_enabled | dedup id | sort id</query>
           <earliest>-15m</earliest>
           <latest>now</latest>
         </search>
-        <option name="wrap">true</option>
-        <option name="rowNumbers">false</option>
+        <option name="count">10</option>
         <option name="dataOverlayMode">none</option>
         <option name="drilldown">cell</option>
-        <option name="count">10</option>
+        <option name="rowNumbers">false</option>
+        <option name="wrap">true</option>
       </table>
     </panel>
   </row>
@@ -33,15 +43,15 @@
       <title>Snapshots (30 Days)</title>
       <table>
         <search>
-          <query>index=freenas source="rest://FreeNAS_storagesnapshots" | eval Refered=case(       refer&gt;=(1024*1024*1024*1024),round(refer/(1024*1024*1024*1024),2)."TB",      refer&gt;=(1024*1024*1024),round(refer/(1024*1024*1024),2)."GB",      refer&gt;=(1024*1024),round(refer/(1024*1024),2)."MB",  refer&gt;=1024,round(refer/1024,2)."KB",  1=1,volume."B")| table id fullname name mostrecent parent_type Refered | dedup fullname | sort mostrecent | reverse</query>
+          <query>index=freenas source="rest://FreeNAS_storagesnapshots" id=$dsf$* name=*$ssnf$*| eval Refered=case(       refer&gt;=(1024*1024*1024*1024),round(refer/(1024*1024*1024*1024),2)."TB",      refer&gt;=(1024*1024*1024),round(refer/(1024*1024*1024),2)."GB",      refer&gt;=(1024*1024),round(refer/(1024*1024),2)."MB",  refer&gt;=1024,round(refer/1024,2)."KB",  1=1,volume."B")| table id fullname name mostrecent parent_type Refered | dedup fullname | sort mostrecent | reverse</query>
           <earliest>-30d@d</earliest>
           <latest>now</latest>
         </search>
-        <option name="wrap">true</option>
-        <option name="rowNumbers">false</option>
+        <option name="count">30</option>
         <option name="dataOverlayMode">none</option>
         <option name="drilldown">cell</option>
-        <option name="count">30</option>
+        <option name="rowNumbers">false</option>
+        <option name="wrap">true</option>
       </table>
     </panel>
   </row>
@@ -54,10 +64,9 @@
           <earliest>-24h@h</earliest>
           <latest>now</latest>
         </search>
-        <option name="wrap">undefined</option>
-        <option name="rowNumbers">undefined</option>
+        <option name="count">30</option>
         <option name="drilldown">row</option>
       </table>
     </panel>
   </row>
-</dashboard>
+</form>

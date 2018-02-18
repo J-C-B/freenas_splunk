@@ -33,6 +33,8 @@
           <query>index=freenas host=192.168.2.4 sourcetype=syslog  runid=* srcset=* | transaction runid | eval mins=duration / 60 |timechart max(mins) by srcset</query>
           <earliest>$field1.earliest$</earliest>
           <latest>$field1.latest$</latest>
+          <refresh>2m</refresh>
+          <refreshType>delay</refreshType>
         </search>
         <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
         <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
@@ -57,6 +59,7 @@
         <option name="charting.layout.splitSeries.allowIndependentYRanges">0</option>
         <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
         <option name="charting.legend.placement">bottom</option>
+        <option name="refresh.display">progressbar</option>
       </chart>
     </panel>
     <panel>
@@ -67,6 +70,8 @@
           <earliest>$field1.earliest$</earliest>
           <latest>$field1.latest$</latest>
           <sampleRatio>1</sampleRatio>
+          <refresh>2m</refresh>
+          <refreshType>delay</refreshType>
         </search>
         <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
         <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
@@ -91,6 +96,7 @@
         <option name="charting.layout.splitSeries.allowIndependentYRanges">0</option>
         <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
         <option name="charting.legend.placement">bottom</option>
+        <option name="refresh.display">progressbar</option>
       </chart>
     </panel>
   </row>
@@ -101,18 +107,21 @@
           <query>index=freenas host=$hostf$ sourcetype=syslog  "$frtxtf$"</query>
           <earliest>$field1.earliest$</earliest>
           <latest>$field1.latest$</latest>
+          <refresh>2m</refresh>
+          <refreshType>delay</refreshType>
         </search>
-        <option name="table.sortDirection">asc</option>
+        <fields>["host","source","sourcetype"]</fields>
+        <option name="count">100</option>
         <option name="list.drilldown">full</option>
         <option name="list.wrap">1</option>
         <option name="maxLines">5</option>
         <option name="raw.drilldown">full</option>
+        <option name="refresh.display">progressbar</option>
         <option name="rowNumbers">0</option>
         <option name="table.drilldown">all</option>
+        <option name="table.sortDirection">asc</option>
         <option name="table.wrap">1</option>
         <option name="type">list</option>
-        <option name="count">100</option>
-        <fields>["host","source","sourcetype"]</fields>
       </event>
     </panel>
   </row>

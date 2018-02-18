@@ -2,6 +2,8 @@
   <collection label="Dashboards">
       <view name="system_info" />
     <divider />
+      <view name="jails" />
+    <divider />
       <view name="zfssend" />
       <view name="zfs" />
     <divider />
