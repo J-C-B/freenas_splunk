@@ -30,7 +30,7 @@ do
         then
                 DevModelFamily=`echo "$CurrentDevSMART" | awk '/Product:/{print $0}' | awk '{ print substr($0, index($0,$2)) }'`
                 Dev_Current_Pending_Sector=`echo "$CurrentDevSMART" | awk '/Current_Pending_Sector/{print $0}' | awk -F " " '{print $NF}'`
-        Dev_Offline_Uncorrectable=`echo "$CurrentDevSMART"  | awk '/Offline_Uncorrectable/{print $0}' | awk -F " " '{print $NF}'`
+                Dev_Offline_Uncorrectable=`echo "$CurrentDevSMART"  | awk '/Offline_Uncorrectable/{print $0}' | awk -F " " '{print $NF}'`
                 DevName=`echo "$CurrentDevSMART" | awk '/Vendor:/{print $0}' | awk '{ print substr($0, index($0,$2)) }'`
                 DevSerNum=`echo "$CurrentDevSMART" | awk '/Serial number:/{print $0}' | awk '{ print substr($0, index($0,$3)) }'`
                 DevLU_WWN_Device_Id=`echo "$CurrentDevSMART" | awk '/Logical Unit id:/{print $0}' | awk '{ print substr($0, index($0,$4)) }'`
@@ -47,7 +47,7 @@ do
         else
                 DevModelFamily=`echo "$CurrentDevSMART" | awk '/Model Family:/{print $0}' | awk '{ print substr($0, index($0,$3)) }'`
                 Dev_Current_Pending_Sector=`echo "$CurrentDevSMART"  | awk '/Current_Pending_Sector/{print $0}' | awk -F " " '{print $NF}'`
-        Dev_Offline_Uncorrectable=`echo "$CurrentDevSMART"  | awk '/Offline_Uncorrectable/{print $0}' | awk -F " " '{print $NF}'`
+                Dev_Offline_Uncorrectable=`echo "$CurrentDevSMART"  | awk '/Offline_Uncorrectable/{print $0}' | awk -F " " '{print $NF}'`
                 DevName=`echo "$CurrentDevSMART" | awk '/Device Model:/{print $0}' | awk '{ print substr($0, index($0,$3)) }'`
                 DevSerNum=`echo "$CurrentDevSMART" | awk '/Serial Number:/{print $0}' | awk '{ print substr($0, index($0,$3)) }'`
                 DevLU_WWN_Device_Id=`echo "$CurrentDevSMART" | awk '/LU WWN Device Id:/{print $0}' | awk '{ print substr($0, index($0,$5)) }'`
