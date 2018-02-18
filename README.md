@@ -8,12 +8,12 @@ http://www.freenas.org/
 
 FreeNAS is a powerful, flexible home storage system – configured by you, for your needs.
 
-Note - This *should* also work for a vanilla [FreeBSD](https://www.freebsd.org/ "FreeBSD") host, and FreeNAS 10 but only basic testing done
+Note - This *should* also work for a vanilla [FreeBSD](https://www.freebsd.org/ "FreeBSD") host, and but only basic testing done
 
 ### ZFS
 The Z File System, or ZFS , is an advanced file system designed to overcome many of the major problems found in previous designs. 
 
-##Splunk®
+## Splunk®
 
 [Free Splunk Download Link](http://www.splunk.com/en_us/download/splunk-enterprise.html "Download]")
 
@@ -26,9 +26,56 @@ When the free trial ends, you can convert to a perpetual Free license or purchas
 
 ### System Info
 
+
+##### Source
+
+
+Source data is gathered via the **/TA-SH_files_for_freenas/cpu_uptime_version_drives.sh** file
+
+##### Dashboard
+
 This Dashboard contains information on the FreeNAS system(s)
 
 ![Example Dashboard1](https://static.dyp.im/8INbVfwu9O/1cd0eef59809dd30f872e2833c7924ae.png)
+
+#### Jails
+
+##### Source
+
+Source data is gathered via the FreeNAS rest API
+
+##### Dashboard
+
+#### ZFS Send and recive
+
+##### Source
+
+##### Dashboard
+
+#### ZFS
+
+##### Source
+
+Source data is gathered via the **/TA-SH_files_for_freenas/zpoolinfo.sh** file
+
+##### Dashboard
+
+#### Network Info
+
+
+##### Source
+
+Source data is gathered via the **/TA-SH_files_for_freenas/nics.sh** file
+
+##### Dashboard
+
+#### Drive Smart Details
+
+##### Source
+
+Source data is gathered via the **/TA-SH_files_for_freenas/cpu_uptime_version_drives.sh** file
+
+##### Dashboard
 
 
 ## Inputs
