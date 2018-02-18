@@ -25,12 +25,14 @@
     <panel>
       <single>
         <search>
-          <query>source="freenas" index="freenas" sourcetype="syslog" cpuid="*" host=$hostf$|timechart max(temperature)</query>
+          <query>source="freenas" index="freenas" sourcetype="syslog" cpuid="*" host=$hostf$|timechart span=10m min(temperature)</query>
           <earliest>-60m@m</earliest>
           <latest>now</latest>
         </search>
         <option name="colorBy">value</option>
         <option name="colorMode">block</option>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
         <option name="numberPrecision">0.0</option>
         <option name="rangeColors">["0x65a637","0xf7bc38","0xf58f39","0xd93f3c"]</option>
         <option name="rangeValues">[45,60,70]</option>
@@ -39,50 +41,73 @@
         <option name="trendColorInterpretation">standard</option>
         <option name="trendDisplayMode">absolute</option>
         <option name="trendInterval">auto</option>
-        <option name="underLabel">in last hour</option>
+        <option name="underLabel">Min CPU temp n last hour</option>
+        <option name="unit">c</option>
         <option name="useColors">1</option>
         <option name="useThousandSeparators">1</option>
-        <option name="linkView">search</option>
-        <option name="drilldown">none</option>
-        <option name="afterLabel">c</option>
-        <option name="beforeLabel">Max CPU temp</option>
       </single>
     </panel>
     <panel>
       <single>
         <search>
-          <query>index="envfactors" sourcetype=_json source="rest://Auckland Weather"  | spath main.temp_max | timechart max("main.temp_max") span=1h</query>
-          <earliest>-24h@h</earliest>
-          <latest>now</latest>
-        </search>
-        <option name="colorBy">value</option>
-        <option name="colorMode">block</option>
-        <option name="numberPrecision">0.00</option>
-        <option name="showSparkline">1</option>
-        <option name="showTrendIndicator">1</option>
-        <option name="trendColorInterpretation">standard</option>
-        <option name="trendDisplayMode">absolute</option>
-        <option name="useColors">1</option>
-        <option name="useThousandSeparators">1</option>
-        <option name="rangeColors">["0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
-        <option name="rangeValues">[18,22,26,32]</option>
-        <option name="trendInterval">auto</option>
-        <option name="underLabel">last 24 hours</option>
-        <option name="linkView">search</option>
-        <option name="drilldown">none</option>
-        <option name="afterLabel">c</option>
-        <option name="beforeLabel">Max Outside temp</option>
-      </single>
-    </panel>
-    <panel>
-      <single>
-        <search>
-          <query>source="freenas" index="freenas" sourcetype="syslog" dev="*" host=$hostf$| timechart max(temperature)</query>
+          <query>source="freenas" index="freenas" sourcetype="syslog" cpuid="*" host=$hostf$|timechart span=10m max(temperature)</query>
           <earliest>-60m@m</earliest>
           <latest>now</latest>
         </search>
         <option name="colorBy">value</option>
         <option name="colorMode">block</option>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="numberPrecision">0.0</option>
+        <option name="rangeColors">["0x65a637","0xf7bc38","0xf58f39","0xd93f3c"]</option>
+        <option name="rangeValues">[45,60,70]</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="trendInterval">auto</option>
+        <option name="underLabel">Max CPU temp in last hour</option>
+        <option name="unit">c</option>
+        <option name="useColors">1</option>
+        <option name="useThousandSeparators">1</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <search>
+          <query>source="rest://Auckland_Weather"  | spath main.temp_max | timechart max("main.temp_max") span=1h</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">block</option>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
+        <option name="numberPrecision">0.00</option>
+        <option name="rangeColors">["0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
+        <option name="rangeValues">[18,22,26,32]</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="trendInterval">auto</option>
+        <option name="underLabel">Max Outside temp last 24 hours</option>
+        <option name="unit">c</option>
+        <option name="useColors">1</option>
+        <option name="useThousandSeparators">1</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <search>
+          <query>source="freenas" index="freenas" sourcetype="syslog" dev="*" host=$hostf$|  timechart  span=10m max(temperature)</query>
+          <earliest>-60m@m</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">block</option>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
         <option name="numberPrecision">0.0</option>
         <option name="rangeColors">["0x65a637","0xf7bc38","0xf58f39","0xd93f3c"]</option>
         <option name="rangeValues">[30,40,50]</option>
@@ -91,39 +116,38 @@
         <option name="trendColorInterpretation">standard</option>
         <option name="trendDisplayMode">absolute</option>
         <option name="trendInterval">auto</option>
-        <option name="underLabel">in last hour</option>
+        <option name="underLabel">Max HDD Temp in last hour</option>
+        <option name="unit">c</option>
         <option name="useColors">1</option>
         <option name="useThousandSeparators">1</option>
-        <option name="linkView">search</option>
-        <option name="drilldown">none</option>
-        <option name="afterLabel">c</option>
-        <option name="beforeLabel">Max HDD Temp</option>
       </single>
     </panel>
     <panel>
       <single>
         <search>
-          <query>index="freenas" PoolName=$poolf$ host=$hostf$| timechart max(CAP)</query>
+          <query>index="freenas" PoolName=$poolf$ host=$hostf$| timechart span=10m max(CAP)</query>
           <earliest>-4h@m</earliest>
           <latest>now</latest>
         </search>
+        <option name="beforeLabel">Highest used Space</option>
         <option name="colorBy">value</option>
         <option name="colorMode">block</option>
+        <option name="drilldown">none</option>
+        <option name="linkView">search</option>
         <option name="numberPrecision">0.0</option>
         <option name="rangeColors">["0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
         <option name="rangeValues">[30,40,50,81]</option>
         <option name="showSparkline">1</option>
         <option name="showTrendIndicator">1</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.size">medium</option>
         <option name="trendColorInterpretation">standard</option>
         <option name="trendDisplayMode">absolute</option>
         <option name="trendInterval">auto</option>
         <option name="underLabel">Max HDD used % space in last 4 hours</option>
+        <option name="unit">%</option>
         <option name="useColors">1</option>
         <option name="useThousandSeparators">1</option>
-        <option name="linkView">search</option>
-        <option name="drilldown">none</option>
-        <option name="beforeLabel">Highest used Space</option>
-        <option name="afterLabel">%</option>
       </single>
     </panel>
   </row>
@@ -164,7 +188,7 @@
       </chart>
     </panel>
     <panel>
-      <title>Drive Temperatures by device - (SSDs = no temp provided by os)</title>
+      <title>Drive Temperatures by device</title>
       <chart>
         <title>(Host filter can be applied)</title>
         <search>
@@ -256,20 +280,20 @@
         <option name="charting.chart.bubbleMaximumSize">50</option>
         <option name="charting.chart.bubbleMinimumSize">10</option>
         <option name="charting.chart.bubbleSizeBy">area</option>
-        <option name="charting.chart.nullValueMode">connect</option>
+        <option name="charting.chart.nullValueMode">zero</option>
         <option name="charting.chart.showDataLabels">none</option>
         <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
-        <option name="charting.chart.stackMode">stacked</option>
+        <option name="charting.chart.stackMode">stacked100</option>
         <option name="charting.chart.style">shiny</option>
         <option name="charting.drilldown">all</option>
         <option name="charting.layout.splitSeries">0</option>
         <option name="charting.layout.splitSeries.allowIndependentYRanges">0</option>
         <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
-        <option name="charting.legend.placement">right</option>
+        <option name="charting.legend.placement">bottom</option>
       </chart>
     </panel>
     <panel>
-      <title>Pool Used Predict (From last 7 days)</title>
+      <title>Pool Used Predict (From last 7 days) $poolf$</title>
       <input type="dropdown" token="poolf" searchWhenChanged="true">
         <label>Pool name</label>
         <search>
