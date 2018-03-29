@@ -75,7 +75,7 @@
     <panel>
       <single>
         <search>
-          <query>source="rest://Weather"  | spath main.temp_max | timechart max("main.temp_max") span=1h</query>
+          <query>index="freenas" OR index="envfactors" source="rest://Weather"  | spath main.temp_max | timechart max("main.temp_max") span=1h</query>
           <earliest>-24h@h</earliest>
           <latest>now</latest>
         </search>
