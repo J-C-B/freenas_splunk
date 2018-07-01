@@ -13,7 +13,7 @@
       <choice value="*">All</choice>
       <search>
         <query>index="freenas" host=* | dedup host | sort host</query>
-        <earliest>-24h@h</earliest>
+        <earliest>-72h@h</earliest>
         <latest>now</latest>
       </search>
       <fieldForLabel>host</fieldForLabel>
@@ -25,7 +25,7 @@
     <panel>
       <single>
         <search>
-          <query>source="freenas" index="freenas" sourcetype="syslog" cpuid="*" host=$hostf$|timechart span=10m min(temperature)</query>
+          <query>source="freenas" index="freenas" sourcetype="syslog" cpuid="*" host=$hostf$|timechart fixedrange=false span=10m min(temperature)</query>
           <earliest>-60m@m</earliest>
           <latest>now</latest>
         </search>
@@ -50,7 +50,7 @@
     <panel>
       <single>
         <search>
-          <query>source="freenas" index="freenas" sourcetype="syslog" cpuid="*" host=$hostf$|timechart span=10m max(temperature)</query>
+          <query>source="freenas" index="freenas" sourcetype="syslog" cpuid="*" host=$hostf$|timechart fixedrange=false span=10m max(temperature)</query>
           <earliest>-60m@m</earliest>
           <latest>now</latest>
         </search>
@@ -75,7 +75,7 @@
     <panel>
       <single>
         <search>
-          <query>index="freenas" OR index="envfactors" source="rest://Weather"  | spath main.temp_max | timechart max("main.temp_max") span=1h</query>
+          <query>index="freenas" OR index="envfactors" source="rest://Weather"  | spath main.temp_max | timechart fixedrange=false max("main.temp_max") span=1h</query>
           <earliest>-24h@h</earliest>
           <latest>now</latest>
         </search>
@@ -100,7 +100,7 @@
     <panel>
       <single>
         <search>
-          <query>source="freenas" index="freenas" sourcetype="syslog" dev="*" host=$hostf$|  timechart  span=10m max(temperature)</query>
+          <query>source="freenas" index="freenas" sourcetype="syslog" dev="*" host=$hostf$|  timechart fixedrange=false span=10m max(temperature)</query>
           <earliest>-60m@m</earliest>
           <latest>now</latest>
         </search>
