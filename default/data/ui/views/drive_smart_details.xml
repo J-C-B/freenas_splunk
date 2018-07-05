@@ -96,10 +96,10 @@
       <title>Drive Smart details</title>
       <table>
         <search>
-          <query>source="freenas" index="freenas" sourcetype="syslog" DriveModel="*"
+          <query>source="freenas" index="freenas" sourcetype="syslog" DriveModel="*" Dev_Current_Pending_Sector=*
 | dedup dev
 | table dev Dev_Current_Pending_Sector Dev_Offline_Uncorrectable DriveBrand DriveModel DriveSerialNumber DevATA_Version Dev_is DevFirmware_Version DevLocal_Time DevLU_WWN_Device_Id DevSATA_Version DevSector_Size DevSMART_support DevUser_Capacity
-| sort dev</query>
+| sort -Dev_Offline_Uncorrectable</query>
           <earliest>-4h@m</earliest>
           <latest>now</latest>
           <sampleRatio>1</sampleRatio>
@@ -108,16 +108,17 @@
         <option name="dataOverlayMode">none</option>
         <option name="drilldown">cell</option>
         <option name="percentagesRow">false</option>
+        <option name="refresh.display">progressbar</option>
         <option name="rowNumbers">false</option>
         <option name="totalsRow">false</option>
         <option name="wrap">true</option>
         <format type="color" field="Dev_Offline_Uncorrectable">
           <colorPalette type="list">[#65A637,#6DB7C6,#F7BC38,#F58F39,#D93F3C]</colorPalette>
-          <scale type="threshold">0,30,70,100</scale>
+          <scale type="threshold">0,1,5,10</scale>
         </format>
         <format type="color" field="Dev_Current_Pending_Sector">
           <colorPalette type="list">[#65A637,#6DB7C6,#F7BC38,#F58F39,#D93F3C]</colorPalette>
-          <scale type="threshold">0,30,70,100</scale>
+          <scale type="threshold">0,1,5,10</scale>
         </format>
       </table>
     </panel>
