@@ -7,12 +7,15 @@
 sysctl -a | egrep -E 'cpu\.[0-9]+\.temp' | cut -d'.' -f2 -f3 -f4 | tr -d ' ' | sed 's/\:/\=/g' | sed 's/cpu./cpuid\=/g' | sed 's/\./\,/g' | logger
 
 
-#Get Freenas Version
+#Get Free(nas|BSD) Version
 
-FreenasVersion=$(cat /etc/version)
-
+if [ -f /etc/version ];
+        then
+                FreenasVersion=$(cat /etc/version)
+        else
+                FreenasVersion=$(uname -srm)
+fi
 echo FreenasVersion=$FreenasVersion | logger
-
 
 #Get systemload
 
@@ -65,5 +68,4 @@ do
 
     echo dev=$i, Dev_Current_Pending_Sector=$Dev_Current_Pending_Sector, Dev_Offline_Uncorrectable=$Dev_Offline_Uncorrectable, temperature=$DevTemp, DriveSerialNumber=$DevSerNum, DriveBrand=$DevName, DriveModel=$DevModelFamily, DevLU_WWN_Device_Id=$DevLU_WWN_Device_Id, DevFirmware_Version=$DevFirmware_Version, DevUser_Capacity=$DevUser_Capacity, DevSector_Size="$DevSector_Size", DevRotation_Rate="$DevRotation_Rate", Dev_is="$Dev_is", DevATA_Version=$DevATA_Version, DevSATA_Version="$DevSATA_Version", DevLocal_Time="$DevLocal_Time", DevSMART_support="$DevSMART_support" | logger
 done
-
 
