@@ -1,22 +1,13 @@
 #! /bin/sh
 
 #NAME      SIZE  ALLOC   FREE  EXPANDSZ   FRAG    CAP  DEDUP  HEALTH  ALTROOT
-
-#zpool list SSD64gb | awk '{ print "PoolName="$1", ""Size="$2", ""Allocated="$3}", ""PoolName="$1", ""Size="$2", ""Allocated="$3}", "'
-
-
+#11.2 adds field CKPOINT
 
 for i in $(zpool list | awk 'NR>1' | awk '{print $1}')
 do
-        PoolName=`zpool list $i | awk 'NR>1' | awk '{print $1}'`
-        Size=`zpool list $i  | awk 'NR>1' | awk '{print $2}'`
-        Allocated=`zpool list $i  | awk 'NR>1' | awk '{print $3}'`
-        Free=`zpool list $i  | awk 'NR>1' | awk '{print $4}'`
-        EXPANDSZ=`zpool list $i  | awk 'NR>1' | awk '{print $5}'`
-        FRAG=`zpool list $i | awk 'NR>1' | awk '{print $6}'`
-        CAP=`zpool list $i  | awk 'NR>1' | awk '{print $7}'`
-        DEDUP=`zpool list $i  | awk 'NR>1' | awk '{print $8}'`
-        HEALTH=`zpool list $i  | awk 'NR>1' | awk '{print $9}'`
-        ALTROOT=`zpool list $i  | awk 'NR>1' | awk '{print $10}'`
-        echo PoolName=$PoolName, Size=$Size, Allocated=$Allocated, Free=$Free, EXPANDSZ=$EXPANDSZ, FRAG=$FRAG, CAP=$CAP, DEDUP=$DEDUP, HEALTH=$HEALTH, ALTROOT=$ALTROUT  | logger
+        USED=$(zfs get used $i | grep used | awk '{print$3}'| sed s/T//g)
+        FREE=$(zfs get available $i | grep available | awk '{print$3}'| sed s/T//g)
+        SIZE=$(echo "$USED + $FREE" | bc)
+        COMP=$(zfs get compressratio $i | grep comp | awk '{print$3}')
+        echo PoolName=$i, Size=$SIZE\T, Allocated=$USED\T, Free=$FREE\T, EXPANDSZ=$(zpool get -H expandsize $i | awk '{print$3}'), FRAG=$(zpool get -H fragmentation $i | awk '{print$3}'), CAP=$(zpool get -H capacity $i | awk '{print$3}'), DEDUP=$(zpool get -H dedupratio $i | awk '{print$3}'), HEALTH=$(zpool get -H health $i | awk '{print$3}'), ALTROOT=$(zpool get -H altroot $i | awk '{print$3}'), Compression:$COMP | logger
 done
